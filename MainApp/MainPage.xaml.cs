@@ -1,7 +1,9 @@
-﻿namespace MainApp
+﻿
+namespace MainApp
 {
     public partial class MainPage : ContentPage
     {
+        public const double MyFontSizeApp = 14;
         public MainPage()
         {
             InitializeComponent();
@@ -35,4 +37,14 @@
             return idade;
         }
     }
+
+    public class GlobalFontSizeExtension : IMarkupExtension
+    {
+        public object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return DeviceInfo.Platform == DevicePlatform.Android ? 18: MainPage.MyFontSizeApp;
+        }
+    }
+
+
 }

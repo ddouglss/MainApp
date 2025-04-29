@@ -1,15 +1,14 @@
-﻿namespace MainApp
+﻿using MainApp.Services.Navigation;
+
+namespace MainApp
 {
     public partial class App : Application
     {
-        public App()
+        public App(INavigationService navigationService)
         {
             InitializeComponent();
-        }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
+            MainPage = new AppShell(navigationService);
         }
     }
 }

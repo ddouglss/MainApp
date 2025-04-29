@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dev="clr-namespace:MainApp.Views"
+             x:Class="MainApp.Views.LoginView"
+             Shell.NavBarIsVisible="False"
+             Title="Login">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorLabel">White</Color>
+            <x:Double x:Key="FontSizeDev">20</x:Double>
+
+            <Style TargetType="Label" x:Key="LabelStyleDev">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBoldStyle" BasedOn="{StaticResource LabelStyleDev}">
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="#512BD4" Offset="0.1"/>
+                <GradientStop Color="#689EFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="650"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout>
+            <Image Source="efeito_pixel_topo.png" 
+           HeightRequest="150" 
+           HorizontalOptions="End"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="13" >
+
+            <Label Margin="0,30,0,0" Style="{StaticResource LabelBoldStyle}" 
+               Text="Faça parte da nova geração de Devs do Brasil"/>
+            <Image Source="astronaura.png" Margin="0,5,0,0" 
+               HeightRequest="110" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Center"/>
+            <Label Margin="0,20,0,0" Style= "{StaticResource LabelStyleDev}" Text="Faça o seu Cadastro"/>
+
+
+            <StackLayout WidthRequest="320" Margin="0,10,0,0">
+                <Label Text="Usuário" FontSize="{dev:GlobalFontSize}">
+                    <Label.TextColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="Android" Value="Black"/>
+                            <On Platform="WinUI" Value="Yellow"/>
+                        </OnPlatform>
+                    </Label.TextColor>
+                </Label>
+                <Entry x:Name="Username" Keyboard="Default" Placeholder="Usuário"/>
+            </StackLayout>
+
+            <StackLayout WidthRequest="320" Margin="0,10,0,0">
+                <Label Text="Senha" FontSize="{dev:GlobalFontSize}">
+                    <Label.TextColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="Android" Value="Black"/>
+                            <On Platform="WinUI" Value="Yellow"/>
+                        </OnPlatform>
+                    </Label.TextColor>
+                </Label>
+                <Entry x:Name="Password" IsPassword="True" Keyboard="Default" Placeholder="Senha"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" WidthRequest="300">
+                <Button x:Name="Login" Clicked="Login_Clicked" Text="Logar"/>
+            </StackLayout>
+            
+        </VerticalStackLayout>
+        
+
+        <Image Grid.Row="1" Margin="0,-100,0,0" HorizontalOptions="Start" Source="efeito_pixel_abaixo.png" />
+
+    </Grid>
+</ContentPage>

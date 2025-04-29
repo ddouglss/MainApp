@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MainApp.Views.CadastroView"
+             xmlns:model="clr-namespace:MainApp.Models.Users"
+             Shell.NavBarIsVisible="False"
+             Title="Cadastro">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorLabel">White</Color>
+            <x:Double x:Key="FontSizeDev">20</x:Double>
+
+            <Style TargetType="Label" x:Key="LabelStyleDev">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBoldStyle" BasedOn="{StaticResource LabelStyleDev}">
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="#512BD4" Offset="0.1"/>
+                <GradientStop Color="#689EFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="650"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout>
+            <Image Source="efeito_pixel_topo.png" 
+               HeightRequest="150" 
+               HorizontalOptions="End"/>
+        </VerticalStackLayout>
+
+        
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="13" >
+
+            <Label Margin="0,20,0,0" Style= "{StaticResource LabelStyleDev}" Text="Faça o seu Cadastro"/>
+
+
+            <StackLayout WidthRequest="300">
+                <Label Text="Nome" Style="{StaticResource LabelStyleDev}"/>
+                <Entry x:Name="NomeEntry"  Keyboard="Text" Placeholder="Nome"/>
+            </StackLayout>
+
+            <StackLayout WidthRequest="300">
+                <Label Text="Sobrenome" Style="{StaticResource LabelStyleDev}"/>
+                <Entry x:Name="SobrenomeEntry" Keyboard="Text" Placeholder="Sobrenome"/>
+            </StackLayout>
+
+            <StackLayout WidthRequest="300">
+                <Label Text="Data de nascimento" Style="{StaticResource LabelStyleDev}"/>
+                <DatePicker x:Name="DataNascimento" DateSelected="DataNascimento_DateSelected"/>
+            </StackLayout>
+            
+            <StackLayout WidthRequest="300">
+                <Label Text="Idade" Style="{StaticResource LabelStyleDev}"/>
+                <Entry x:Name="IdadeEntry" Keyboard="Numeric" Placeholder="Idade" IsEnabled="False"/>
+            </StackLayout>
+
+
+            <StackLayout WidthRequest="300">
+                <Label Text="Gênero" Style="{StaticResource LabelStyleDev}"/>
+                <Picker x:Name="Genero" Title="Selecione um gênero" SelectedItem="{Binding Gender}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Masculino</x:String>
+                            <x:String>Feminino</x:String>
+                            <x:String>Prefiro não declarar</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+
+            <StackLayout WidthRequest="300">
+                <Label Text="Usuário" Style="{StaticResource LabelStyleDev}"/>
+                <Entry x:Name="UsernameEntry" Keyboard="Email" Placeholder="Usuário"/>
+            </StackLayout>
+
+            <StackLayout WidthRequest="300">
+                <Label Text="Senha" Style="{StaticResource LabelStyleDev}"/>
+                <Entry x:Name="PasswordEntry" IsPassword="True" Placeholder="Senha"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" WidthRequest="150" Margin="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Button x:Name="Cadastrar" Clicked="Cadastrar_Clicked" Text="Cadastrar" BackgroundColor="{StaticResource ColorLabel}" TextColor="Black"/>
+            </StackLayout>
+        </VerticalStackLayout>
+
+        <Image Grid.Row="1" Margin="0,-100,0,0" HorizontalOptions="Start" Source="efeito_pixel_abaixo.png" />
+
+    </Grid>
+</ContentPage>

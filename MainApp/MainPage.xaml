@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dev="clr-namespace:MainApp"
              x:Class="MainApp.MainPage"
              Title="Cadastro"
              Shell.TitleColor="White"
@@ -30,15 +31,22 @@
 
             <StackLayout Grid.Row="1"  Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
                 <StackLayout WidthRequest="320" Margin="0,10,0,0">
-                    <Label Text="Nome Completo"/>
+                    <Label Text="Nome Completo" FontSize="{dev:GlobalFontSize}">
+                        <Label.TextColor>
+                            <OnPlatform x:TypeArguments="Color">
+                                <On Platform="Android" Value="Black"/>
+                                <On Platform="WinUI" Value="Yellow"/>
+                            </OnPlatform>
+                        </Label.TextColor>
+                    </Label>
                     <Entry x:Name="NomeCompleto" Keyboard="Text" Placeholder="Nome Completo"/>
                 </StackLayout>
                 <StackLayout WidthRequest="320" Margin="0,10,0,0">
-                    <Label Text="Data de nascimento"/>
+                    <Label Text="Data de nascimento" FontSize="{dev:GlobalFontSize}"/>
                     <DatePicker DateSelected="DataNascimento_DateSelected" x:Name="DataNascimento" Format="dd/MM/yyyy"/>
                 </StackLayout>
                 <StackLayout WidthRequest="320" Margin="0,10,0,0">
-                    <Label Text="Gênero"/>
+                    <Label Text="Gênero" FontSize="{dev:GlobalFontSize}"/>
                     <Picker x:Name="Genero" Title="Selecione um gênero">
                        <Picker.ItemsSource>
                            <x:Array Type="{x:Type x:String}">
@@ -50,7 +58,7 @@
                     </Picker>
                 </StackLayout>
                 <StackLayout WidthRequest="320" Margin="0,10,0,0">
-                    <Label Text="Idade"/>
+                    <Label Text="Idade" FontSize="{dev:GlobalFontSize}"/>
                     <Entry IsEnabled="False" x:Name="Idade" Keyboard="Numeric" Placeholder="Idade"/>
                 </StackLayout>
             </StackLayout>
